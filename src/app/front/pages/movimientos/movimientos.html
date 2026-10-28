@@ -1,1 +1,86 @@
-<p>movimientos works!</p>,
+<div>
+  <button
+    class="bg-green-800 px-4 py-2 rounded-full m-2 text-white hover:cursor-pointer hover:bg-green-900"
+    (click)="toggleForm()"
+  >
+    + Movimiento
+  </button>
+</div>
+<div class="bg-blue-300 flex flex-col md:grid md:grid-cols-3">
+  <div class="bg-red-300 md:col-span-2">hola</div>
+  <div>hola</div>
+</div>
+@if (showForm()) {
+  <form
+    [formGroup]="movimientosForm"
+    class="absolute w-2/3 px-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl shadow-2xl p-3 flex flex-col gap-4 md:max-w-lg bg-white"
+  >
+    <div class="flex justify-between pt-2">
+      <div class="font-bold font text-gray-600 text-xl">
+        Nuevo movimiento
+      </div>
+      <button
+        class="rounded-full px-2 hover:cursor-pointer shadow hover:bg-gray-100/60"
+        (click)="toggleForm()"
+      >
+        X
+      </button>
+    </div>
+    <div>
+      <div class="text-sm text-gray-700">Tipo de movimiento</div>
+      <select
+        class="border w-full border-gray-400 rounded shadow p-1 text-sm outline-none focus:border-green-800"
+      >
+        <option class="text-gray-700 rounded text-sm">Gasto</option>
+        <option class="text-gray-700 rounded text-sm">Ingreso</option>
+      </select>
+    </div>
+    <div>
+      <div class="text-gray-700 text-sm">Fecha</div>
+      <input
+        formControlName="fecha"
+        class="border w-full border-gray-400 rounded shadow p-1 text-sm outline-none focus:border-green-800"
+      />
+    </div>
+    <div>
+      <div class="text-gray-700 text-sm">Concepto</div>
+      <input
+        formControlName="concepto"
+        placeholder="Esto va a ser un select"
+        class="border w-full border-gray-400 rounded shadow p-1 text-sm outline-none focus:border-green-800"
+      />
+    </div>
+    <div>
+      <div class="text-gray-700 text-sm">Importe</div>
+      <input
+        type="number"
+        formControlName="importe"
+        placeholder="Introduzca el importe..."
+        class="border w-full border-gray-400 rounded shadow p-1 text-sm outline-none focus:border-green-800"
+      />
+    </div>
+    <div>
+      <div class="text-gray-700 text-sm">Observaciones</div>
+      <textarea
+        cols="30"
+        rows="10"
+        formControlName="observaciones"
+        placeholder="Breve explicación sobre el movimiento."
+        class="border w-full border-gray-400 rounded shadow px-1 py-2 text-sm outline-none focus:border-green-800"
+      ></textarea>
+    </div>
+    <div class="flex justify-end gap-6">
+      <button
+        class="text-gray-600 underline hover:cursor-pointer"
+        (click)="toggleForm()"
+      >
+        Cancel
+      </button>
+      <button
+        class="bg-green-800 px-4 py-2 rounded-full my-2 text-white hover:cursor-pointer hover:bg-green-900"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+}
